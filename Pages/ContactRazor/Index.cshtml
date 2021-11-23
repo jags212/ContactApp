@@ -1,0 +1,48 @@
+﻿@page
+@model ContactApp.ContactRazor.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact[0].Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Contact)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <a asp-page="/ContactRazor/Edit" asp-route-id="@item.ContactId">Edit</a> |
+                    <a asp-page="/ContactRazor/Details" asp-route-id="@item.ContactId">Details</a> |
+                    <a asp-page="/ContactRazor/Delete" asp-route-id="@item.ContactId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
